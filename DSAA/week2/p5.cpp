@@ -3,17 +3,18 @@
 using namespace std;
 
 int L,n,m;
-int d[5005];
+int d[500005];
 
 bool possible (int dis){
     int last=0,cnt=m-1;
     for (int i=1;i<=n+1;i++){
-        if (cnt==0) return false;
+        if (cnt==0 && d[n+1]-d[last]>dis) return false;
         if (d[i]-d[last]>dis){
             if (i-last==1) return false;
             else{
                 last=i-1; 
                 cnt--;
+                i--;
             }
         }
     }
