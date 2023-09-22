@@ -20,9 +20,6 @@ int main(){
     while (T--){
         cin>>x>>y;
         
-        //cout<<locate(x)<<endl;      
-        //cout<<locate(y)<<endl;
-
         int lx=locate(x),ly=locate(y);
         int ans=ly-lx-1;
         if (x<a[lx]) ans++;
