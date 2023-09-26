@@ -4,16 +4,16 @@ using namespace std;
 const int dir[4][2]={{0,1},{0,-1},{-1,0},{1,0}};
 
 struct point{
-    int x,y;    
+    long long x,y;    
 };
 
 point p,P;
-int T,run[10010];
-int x_T,y_T;
+long long T,run[10010];
+long long x_T,y_T;
 
 point get_point (int t){
-    int cir=t/T;
-    int rest=t%T;
+    long long cir=t/T;
+    long long rest=t%T;
     point p_t=P;
     p_t.x+=cir*x_T;
     p_t.y+=cir*y_T;
@@ -46,13 +46,13 @@ int main(){
         y_T+=dir[run[i]][1];
     }
 
-    int l=1,r=1000000000;
+    long long l=1,r=0x7f;
     while (l<r){
-        int mid=(l+r)/2;
+        long long mid=(l+r)/2;
         if (chase(mid)) r=mid;
         else l=mid+1;
     }
 
-    cout<<l;
+    cout<<(l==0x7f ? -1 : l);
     return 0;
 }
