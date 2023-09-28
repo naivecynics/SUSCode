@@ -8,7 +8,7 @@ struct point{
 };
 
 point p,P;
-long long T,run[10010];
+long long T,run[20000];
 long long x_T,y_T;
 
 point get_point (int t){
@@ -24,7 +24,7 @@ point get_point (int t){
     return p_t;
 }
 
-bool chase (int t){
+bool chase (long long t){
     point P_t=get_point(t);
     return abs(P_t.x-p.x)+abs(P_t.y-p.y)<=t ? true : false;
 }
@@ -46,13 +46,18 @@ int main(){
         y_T+=dir[run[i]][1];
     }
 
-    long long l=1,r=0x7f;
+    if (p.x==P.x && p.y==P.y){
+        cout<<0;
+        return 0;
+    }
+
+    long long l=1,r=9000000000000000;
     while (l<r){
-        long long mid=(l+r)/2;
+        long long mid=(l+r) >> 1;
         if (chase(mid)) r=mid;
         else l=mid+1;
     }
 
-    cout<<(l==0x7f ? -1 : l);
+    printf("%lld",(l==9000000000000000 ? -1 : l));
     return 0;
 }

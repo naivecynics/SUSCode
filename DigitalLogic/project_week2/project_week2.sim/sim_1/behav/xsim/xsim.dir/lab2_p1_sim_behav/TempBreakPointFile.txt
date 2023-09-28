@@ -1,2 +1,0 @@
-Breakpoint File Version 1.0
-36 true C:/Users/Langchu HUANG/OneDrive - SUSTech/Desktop/code/DigitalLogic/project_week2/project_week2.srcs/sim_1/new/lab2_p1_sim.v
