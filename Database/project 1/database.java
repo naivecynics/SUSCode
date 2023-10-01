@@ -34,8 +34,25 @@ public class database {
         return films.get(index);
     }
 
-    public film[] search (String keyword){
-`       
+    public ArrayList<film> search (String keyword){
+        ArrayList<film> result = new ArrayList<film>();
+        for (int i = 0; i < this.films.size(); i++) {
+            film currentFilm = this.films.get(i);
+            if (currentFilm.getTitle().contains(keyword) || currentFilm.getDescription().contains(keyword) || currentFilm.getDirector().contains(keyword) || currentFilm.getGenre().contains(keyword) || currentFilm.getLanguage().contains(keyword) || currentFilm.getCast().contains(keyword)) {
+                result.add(currentFilm);
+            }
+        }
+       return result;
+    }
+
+    public void printFilms (ArrayList<film> films) {
+        System.out.printf ("No\tTitle\tDirector\tGenre\tLanguage\tYear\n");
+        for (int i = 0; i < films.size(); i++) {
+            film currentFilm = films.get(i);
+            System.out.printf ("%d\t%s\t%s\t%s\t%s\t%d\n", currentFilm.getNo(), currentFilm.getTitle(), currentFilm.getDirector(), currentFilm.getGenre(), currentFilm.getLanguage(), currentFilm.getYear());
+            //print in tab
+        }
+        System.out.printf ("Total: %d\n", films.size());
     }
 
     //public film[] search ()

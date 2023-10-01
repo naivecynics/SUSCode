@@ -10,13 +10,18 @@ public class timeCauculater {
 
     public void printTime(int type) {
         long endTime = System.currentTimeMillis();
-        long lastTime = endTime;
-        long timeElapsed = endTime - startTime;
-
-        if (type == 1) { //intialize database
-            System.out.println("Time to initialize database: " + (lastTime - startTime) + " milliseconds");  
+        long timeElapsed = endTime - lastTime;
+        long timeElapsedTotal = endTime - startTime;
+        switch (type){
+            case 1:
+            System.out.println("Time to initialize database: " + timeElapsed + " milliseconds");
+            break;
+            case 2:
+            System.out.println("Time to search: " + timeElapsed + " milliseconds");
+            break;
         }
         
-        System.out.println("Execution time in milliseconds: " + timeElapsed);
+        System.out.println("Execution time in milliseconds: " + timeElapsedTotal);
+        lastTime = endTime;
     }
 }

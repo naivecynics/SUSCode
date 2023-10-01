@@ -5,7 +5,7 @@ public class film {
     private int no;
     private String title;
     private String description;
-    private String director;
+    private ArrayList<String> director;
     private ArrayList<String> genre;
     private String language;
     private int year;
@@ -14,14 +14,35 @@ public class film {
     public film (String[] data) {
         this.genre = new ArrayList<String>();
         this.cast = new ArrayList<String>();
+        this.director = new ArrayList<String>();
 
         this.no = Integer.parseInt(data[0]);
         this.title = data[1];
         this.description = data[2];
-        this.director = data[3];
+        String[] directorList = data[3].split(", ");
+        for (int i = 0; i < directorList.length; i++) {          
+            if (directorList[i].length() == 0) {
+                continue;
+            } else if (directorList.length == 1) {
+                if (directorList[i].length() == 0) {
+                    System.out.println(directorList[i]);
+                }
+                this.director.add(directorList[i].substring(0, directorList[i].length()));
+            } else if (i == 0) {
+                this.director.add(directorList[i].substring(1));
+            } else if (i == directorList.length - 1) {
+                this.director.add(directorList[i].substring(0, directorList[i].length() - 1));
+            } else if (i != 0 && i != directorList.length - 1) {
+                this.director.add(directorList[i]);
+            }
+        }
         String[] genreList = data[4].split(", ");
         for (int i = 0; i < genreList.length; i++) {
-            if (i == 0){
+            if (genreList[i].length() == 0) {
+                continue;
+            } else if (genreList.length == 1){
+                this.genre.add(genreList[i].substring(0, genreList[i].length()));
+            } else if (i == 0){
                 this.genre.add(genreList[i].substring(1));
             } else if (i == genreList.length - 1) {
                 this.genre.add(genreList[i].substring(0, genreList[i].length() - 1));
@@ -33,9 +54,13 @@ public class film {
         this.year = Integer.parseInt(data[6]);
         String[] castList = data[7].split(", ");
         for (int i = 0; i < castList.length; i++) {
-            if (i == 0) {
+            if (castList[i].length() == 0) {
+                continue;
+            } else if (castList.length == 1) {
+                this.cast.add(castList[i].substring(1, castList[i].length() - 1));
+            } else if (i == 0) {
                 this.cast.add(castList[i].substring(1));
-            } else if (i == castList.length - 1) {
+            } else if (i == castList.length - 1) {  
                 this.cast.add(castList[i].substring(0, castList[i].length() - 1));
             } else if (i != 0 && i != castList.length - 1) {
                 this.cast.add(castList[i]);
@@ -53,7 +78,7 @@ public class film {
     public String getDescription() {
         return this.description;
     }
-    public String getDirector() {
+    public ArrayList<String> getDirector() {
         return this.director;
     }
     public ArrayList<String> getGenre() {
@@ -68,7 +93,7 @@ public class film {
     public ArrayList<String> getCast() {
         return this.cast;
     }
-    
+
     //setters
     public void setNo(int no) {
         this.no = no;
@@ -79,7 +104,7 @@ public class film {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setDirector(String director) {
+    public void setDirector(ArrayList<String> director) {
         this.director = director;
     }
     public void setGenre(ArrayList<String> genre) {

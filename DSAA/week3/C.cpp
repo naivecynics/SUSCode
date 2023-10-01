@@ -28,11 +28,11 @@ long long inverse(int l,int r){
 }
 
 int main(){
-    cin>>T;
-    while (T--){
+    //cin>>T;
+    //while (T--){
         cin>>n;
         memset (tmp,0,sizeof(tmp));
         for (int i=1;i<=n;i++) cin>>a[i];
         cout<<inverse(1,n)<<endl;
-    }
+    //}
 }

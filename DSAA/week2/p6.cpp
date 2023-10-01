@@ -1,17 +1,18 @@
 #include<iostream>
+//#define int long long
 using namespace std;
-
+ 
 const int dir[4][2]={{0,1},{0,-1},{-1,0},{1,0}};
-
+ 
 struct point{
     long long x,y;    
 };
-
+ 
 point p,P;
-long long T,run[20000];
+long long T,run[100010];
 long long x_T,y_T;
-
-point get_point (int t){
+ 
+point get_point (long long t){
     long long cir=t/T;
     long long rest=t%T;
     point p_t=P;
@@ -23,15 +24,15 @@ point get_point (int t){
     }
     return p_t;
 }
-
+ 
 bool chase (long long t){
     point P_t=get_point(t);
     return abs(P_t.x-p.x)+abs(P_t.y-p.y)<=t ? true : false;
 }
-
-
+ 
+ 
 int main(){
-
+ 
     cin>>p.x>>p.y>>P.x>>P.y;
     cin>>T;
     for (int i=1;i<=T;i++){
@@ -41,23 +42,18 @@ int main(){
         else if (c=='D') run[i]=1;
         else if (c=='L') run[i]=2;
         else if (c=='R') run[i]=3;
-
+ 
         x_T+=dir[run[i]][0];
         y_T+=dir[run[i]][1];
     }
-
-    if (p.x==P.x && p.y==P.y){
-        cout<<0;
-        return 0;
-    }
-
-    long long l=1,r=9000000000000000;
+ 
+    long long l=0,r=9000000000000000ll;//long long 用9000000000000000ll
     while (l<r){
-        long long mid=(l+r) >> 1;
+        long long mid=(l+r)/2;
         if (chase(mid)) r=mid;
         else l=mid+1;
     }
-
-    printf("%lld",(l==9000000000000000 ? -1 : l));
+ 
+    cout<<(l==9000000000000000ll ? -1 : l);//long long 用9000000000000000ll
     return 0;
 }

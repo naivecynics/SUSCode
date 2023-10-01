@@ -1,5 +1,4 @@
 #include<iostream>
-#include<algorithm>
 using namespace std;
 
 int L,n,m;
@@ -22,6 +21,21 @@ bool possible (int dis){
     else return false;
 }
 
+void quick_sort (int a[], int l, int r){
+    if (l>=r) return;
+    int i=l, j=r, p=a[(l+r)>>1];
+    while (i<=j){
+        while (a[i]<p) i++;
+        while (a[j]>p) j--;
+        if (i<=j){
+            swap (a[i],a[j]);
+            i++, j--;
+        }
+    }
+    quick_sort (a,l,j);
+    quick_sort (a,i,r);
+}
+
 int main(){
 
     while(std::cin>>L>>n>>m){
@@ -29,7 +43,7 @@ int main(){
         for (int i=1;i<=n;i++) cin>>d[i];
         d[n+1]=L;
 
-        sort (d,d+n+2);
+        quick_sort (d,0,n+1);
 
         int l=0,r=L;
         while (l<r){
