@@ -10,7 +10,7 @@ int main(){
     cin>>n>>S;
     for (int i=0;i<n;i++) scanf ("%d",&a[i]);
 
-    for (int i=0;i<n && a[i]<=S/3;i++){
+    for (int i=0;i<n-2 && a[i]<=S/3;i++){
         for (int j=i+1;j<n-1 && S-a[i]-a[j]>=a[j];j++){
 
             rest=S-a[i]-a[j];

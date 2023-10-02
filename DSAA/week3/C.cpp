@@ -9,8 +9,6 @@ int tmp[100001];
 
 long long inverse(int l,int r){
     if (l==r) return 0;
-    int mid=(l+r)>>1;
-    long long ans=inverse(l,mid)+inverse(mid+1,r);
     int i=l,j=mid+1;
     int tot=0;
     for (int k=l;k<=r;k++){
