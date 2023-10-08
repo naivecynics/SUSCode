@@ -16,7 +16,7 @@ proc create_report { reportName command } {
     send_msg_id runtcl-5 warning "$msg"
   }
 }
-set_param synth.incrementalSynthesisCache {C:/Users/Langchu HUANG/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-19768-CHU/incrSyn}
+set_param synth.incrementalSynthesisCache {C:/Users/Langchu HUANG/AppData/Roaming/Xilinx/Vivado/.Xil/Vivado-23112-CHU/incrSyn}
 set_msg_config -id {Synth 8-256} -limit 10000
 set_msg_config -id {Synth 8-638} -limit 10000
 create_project -in_memory -part xc7a35tcsg324-1
@@ -30,7 +30,7 @@ set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property ip_output_repo c:/SUSCode/DigitalLogic/week3/lab_a1_p1/lab_a1_p1.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
-read_verilog -library xil_defaultlib C:/SUSCode/DigitalLogic/week3/lab_a1_p1/lab_a1_p1.srcs/sources_1/new/lab_a1_p1.v
+read_verilog -library xil_defaultlib C:/SUSCode/DigitalLogic/week3/lab_a1_p1/lab_a1_p1.srcs/sources_1/new/lab_a1_p2.v
 # Mark all dcp files as not used in implementation to prevent them from being
 # stitched into the results of this synthesis run. Any black boxes in the
 # design are intentionally left as such for best results. Dcp files will be
@@ -40,10 +40,10 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
 
-synth_design -top lab_a1_p1 -part xc7a35tcsg324-1
+synth_design -top lab_a1_p2 -part xc7a35tcsg324-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef lab_a1_p1.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file lab_a1_p1_utilization_synth.rpt -pb lab_a1_p1_utilization_synth.pb"
+write_checkpoint -force -noxdef lab_a1_p2.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file lab_a1_p2_utilization_synth.rpt -pb lab_a1_p2_utilization_synth.pb"

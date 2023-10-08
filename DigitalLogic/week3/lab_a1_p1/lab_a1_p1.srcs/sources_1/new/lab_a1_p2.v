@@ -29,13 +29,7 @@ module lab_a1_p2(
     output Y
     );
     //data flow method
-    assign X = (~A ~^ D) | (~A & (B | C));
-    assign Y = ~((~A) & (~A ~^ D)) & (~A & (B | C));
-    // assign and_BC = B & C;
-    // assign A_not = ~A;
-    // assign or_out = and_BC | A_not;
-    // assign nand_out = ~(A_not & D);
-    // assign xnor_out = ~(D ^ A_not);
-    // assign X = ~(nand_out | or_out);
-    // assign Y = ~(or_out ^ xnor_out);
+    assign X = (~A ^~ D) | (~A | (B & C));
+    assign Y = ~((~A) & (~A ^~ D)) & (~A | (B & C));
+
 endmodule

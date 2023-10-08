@@ -29,14 +29,13 @@ module lab_a1_p1(
     output Y
     );
 
-
-    wire and_BC,nand_out,A_not,or_out,xnor_out;
-    not not_A(A_not, A);
-    and and_1(and_BC, B, C);
-    and and_2(Y, nand_out, xnor_out);
-    or or_1(or_out, and_BC, A_not);
-    or or_2(X, nand_out, or_out);
-    nand nand_1(nand_out, A_not, xnor_out);
-    xnor xnor_1(xnor_out, D, A_not);
+    wire A_not, nand_out, or_out, and_out, xnor_out;
+    not not_A (A_not, A);
+    nand nand_1 (nand_out, A_not, xnor_out);
+    or or_1 (or_out, A_not, and_out);
+    and and_1 (and_out, B, C);
+    xnor xnor_1 (xnor_out, A_not, D);
+    or or_2 (X, or_out, xnor_out);
+    and and_2 (Y, nand_out, or_out);
     
 endmodule

@@ -5,10 +5,10 @@ public class DatabaseManipulation implements DataManipulation {
     private Connection con = null;
     private ResultSet resultSet;
 
-    private String host = "192.168.1.3";
-    private String dbname = "cs307";
-    private String user = "checker";
-    private String pwd = "123456";
+    private String host = "localhost";
+    private String dbname = "cslab1";
+    private String user = "postgres";
+    private String pwd = "xwpc.769394";
     private String port = "5432";
 
 
@@ -141,6 +141,63 @@ public class DatabaseManipulation implements DataManipulation {
 
     @Override
     public String findMovieById(int id) {
+        //good things:
+        //prestatement
+        //close autu commit: con.setAutoCommit(false);
+        //
+        //todo
+        getConnection();
+        StringBuilder sb = new StringBuilder();
+        String sql = "select m.title,c.country_name country,c.continent ,m.runtime " +
+                "from movies m " +
+                "join countries c on m.country=c.country_code " +
+                "where m.movieid=?;";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                sb.append(resultSet.getString("movieid") + "\t");
+                sb.append(resultSet.getString("title") + "\t");
+                sb.append(resultSet.getString("continent") + "\t");
+                sb.append(String.format("%-18s", resultSet.getString("country")));
+                sb.append(resultSet.getString("year_released") + "\t");
+                sb.append(resultSet.getString("runtime") + "\t");
+                sb.append(System.lineSeparator());
+                return sb.toString();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
+        return null;
+    }
+
+    public String findMovieByYear (int year) {
+        getConnection();
+        StringBuilder sb = new StringBuilder();
+        String sql = "select m.title,c.country_name country,c.continent ,m.runtime " +
+                "from movies m " +
+                "join countries c on m.country=c.country_code " +
+                "where m.year_released=?;";
+        try {
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setInt(1, year);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                sb.append(resultSet.getString("title") + "\t");
+                sb.append(resultSet.getString("continent") + "\t");
+                sb.append(String.format("%-18s", resultSet.getString("country")));
+                sb.append(resultSet.getString("runtime") + "\t");
+                sb.append(System.lineSeparator());
+                return sb.toString();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            closeConnection();
+        }
         return null;
     }
 

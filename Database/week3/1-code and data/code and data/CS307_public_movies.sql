@@ -153,6 +153,7 @@ INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('L''A
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('The Nutty Professor', 'us', 1963, 107);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Twins', 'us', 1988, 107);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Kuch Kuch Hota Hai', 'in', 1998, 185);
+
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('To Be or Not to Be', 'us', 1942, 99);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Ninotchka', 'us', 1939, 108);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Devdas', 'in', 1935, null);
@@ -597,7 +598,7 @@ INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('A Le
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Leaving Las Vegas', 'us', 1995, 112);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('A Letter to Three Wives', 'us', 1949, 103);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Life with Father', 'us', 1947, 118);
-INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Psycho', 'us', 1960, 109);
+IINSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Psycho', 'us', 1960, 109);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Little Big Man', 'us', 1970, 139);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('The Little Foxes', 'us', 1941, 115);
 INSERT INTO public.movies (title, country, year_released, runtime) VALUES ('Little Fugitive', 'us', 1953, 80);
