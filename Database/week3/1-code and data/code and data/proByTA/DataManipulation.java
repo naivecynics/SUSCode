@@ -1,5 +1,6 @@
 public interface DataManipulation {
 
+    //增删补查c:\SUSCode\Database\project 1\project1.pdf
     public int addOneMovie(String str);
     public String allContinentNames();
     public String continentsWithCountryCount();

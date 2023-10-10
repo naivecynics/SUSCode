@@ -8,7 +8,7 @@ public class DataFactory {
         } else if (arg.toLowerCase().contains("database")) {
             name = "DatabaseManipulation";
         } else {
-            throw new IllegalArgumentException("Illegal Argument:" + arg);
+                    throw new IllegalArgumentException("Illegal Argument:" + arg);
         }
         try {
             return (DataManipulation) Class.forName(name).getDeclaredConstructor().newInstance();

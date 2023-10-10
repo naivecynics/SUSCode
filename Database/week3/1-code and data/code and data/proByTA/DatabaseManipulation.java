@@ -1,5 +1,6 @@
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseManipulation implements DataManipulation {
     private Connection con = null;
@@ -157,11 +158,11 @@ public class DatabaseManipulation implements DataManipulation {
             preparedStatement.setInt(1, id);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                sb.append(resultSet.getString("movieid") + "\t");
+                //sb.append(resultSet.getString("movieid") + "\t");
                 sb.append(resultSet.getString("title") + "\t");
                 sb.append(resultSet.getString("continent") + "\t");
                 sb.append(String.format("%-18s", resultSet.getString("country")));
-                sb.append(resultSet.getString("year_released") + "\t");
+                //sb.append(resultSet.getString("year_released") + "\t");
                 sb.append(resultSet.getString("runtime") + "\t");
                 sb.append(System.lineSeparator());
                 return sb.toString();
@@ -174,9 +175,10 @@ public class DatabaseManipulation implements DataManipulation {
         return null;
     }
 
-    public String findMovieByYear (int year) {
+    public String findMovieByYear(int year) {
         getConnection();
         StringBuilder sb = new StringBuilder();
+        StringBuilder list = new StringBuilder();
         String sql = "select m.title,c.country_name country,c.continent ,m.runtime " +
                 "from movies m " +
                 "join countries c on m.country=c.country_code " +
@@ -191,8 +193,9 @@ public class DatabaseManipulation implements DataManipulation {
                 sb.append(String.format("%-18s", resultSet.getString("country")));
                 sb.append(resultSet.getString("runtime") + "\t");
                 sb.append(System.lineSeparator());
-                return sb.toString();
+                list.append(sb.toString());
             }
+            return list.toString();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

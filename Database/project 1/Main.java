@@ -7,7 +7,8 @@ public class Main {
     public static void main(String[] args) {
         
         Scanner scanner = new Scanner(System.in);
-        timeCauculater time = new timeCauculater();
+        timeCalculator time = new timeCalculator();
+        DataFactory hello = new fileManipulation().createDataManipulation(args[0]);
 
         //initialize database from csv file
         database tomato = new database("filmData.csv");

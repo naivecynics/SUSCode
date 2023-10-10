@@ -51,3 +51,5 @@ select m.title,c.country_name country,c.continent ,m.runtime
                 where m.movieid = 2769;
 
 select continent from countries group by continent
+
+select * from movies where year_released = 1994
