@@ -3,10 +3,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class database {
+public class file {
     public ArrayList<film> films;
 
-    public database(String csvFile) {
+    public file(String csvFile) {
 
         this.films = new ArrayList<film>();
         String line;
