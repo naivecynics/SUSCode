@@ -29,7 +29,7 @@ module sim();
         .C(c_tb),
         .D(d_tb),
         .X(x_tb1),
-        .Y(y_tb1)
+        .Y(x_tb2)
         );
 
     lab_a1_p2 lab_a1_p2_0(
@@ -37,7 +37,7 @@ module sim();
         .B(b_tb),
         .C(c_tb),
         .D(d_tb),
-        .X(x_tb2),
+        .X(y_tb1),
         .Y(y_tb2)
         );
     

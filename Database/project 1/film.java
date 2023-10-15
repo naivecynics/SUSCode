@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class film {
+public class Film {
     //No,Title,Description,Director,Genre,Language,Year,Cast
     private int no;
     private String title;
@@ -11,7 +11,7 @@ public class film {
     private int year;
     private ArrayList<String> cast;
 
-    public film (String[] data) {
+    public Film (String[] data) {
         this.genre = new ArrayList<String>();
         this.cast = new ArrayList<String>();
         this.director = new ArrayList<String>();
@@ -104,11 +104,17 @@ public class film {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setDirector(ArrayList<String> director) {
-        this.director = director;
+    public void setDirector(String[] director) {
+        this.director.clear();
+        for (int i = 0; i < director.length; i++) {
+            this.director.add(director[i]);
+        }
     }
-    public void setGenre(ArrayList<String> genre) {
-        this.genre = genre;
+    public void setGenre(String[] genre) {
+        this.genre.clear();
+        for (int i = 0; i < genre.length; i++) {
+            this.genre.add(genre[i]);
+        }
     }
     public void setLanguage(String language) {
         this.language = language;
@@ -116,7 +122,10 @@ public class film {
     public void setYear(int year) {
         this.year = year;
     }
-    public void setCast(ArrayList<String> cast) {
-        this.cast = cast;
+    public void setCast(String[] cast) {
+        this.cast.clear();
+        for (int i = 0; i < cast.length; i++) {
+            this.cast.add(cast[i]);
+        }
     }
 }

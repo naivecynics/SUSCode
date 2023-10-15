@@ -1,48 +1,187 @@
-# 要求解读
+# Report for the First Project of Database
 
-项目1:DBMS性能评估
+### CS213 12213009 Langchu HUANG 黄朗初
 
-数据库管理系统可以方便地管理数据，提高数据检索的效率很大。请将自己使用Java实现的数据检索和其他操作进行比较。用C/ c++或任何其他语言来查找DBMS的差异。
+---
 
-需求
+## 0. Catalogue
 
-． 找一些实验数据。你可以使用所有带有标题、导演、演员等的电影相关信息。其他一些数据，如“股票数据”，“图书馆数据”等也很好。但尺寸应该相当大。将数据存储到一个PostgreSQL数据库表中，并放入文件(您喜欢的任何格式)。
+- [1. Project Structure](#1-project-structure)
+  
+- [2. Implemented Function](#2-implemented-function)
 
-． 检索比较:在SQL中使用select查找标题中有“XXX”字样的电影并记录执行时间。执行完成后，可以从客户端获取执行时间。写一个Java或C/ c++程序通过文件来完成。比较两者的差异方法。
+- [3. Time Comparison](#3-time-comparison)
 
-． 更新比较:在SQL中使用Update将人名中的“to”改为“TTOO”。写一个Java或C/ c++程序在文件中执行此操作。比较两种方法的差异。
+- [4. Conclusion](#4-conclusion)
 
-． 你还想做一些其他的比较和实验。比如你可以重新组织将数据转换成其他格式以便更快地检索。建议您研究其机理DMBS的存储和检索。
+- [5. Evaluation](#5-evaluation)
 
-报告
+- [6. Appendix](#6-appendix)
 
-． 这是个人项目。每个学生应单独完成，并提交一份报告项目。
+---
 
-． 提交的报告应包含的设计，实施和评估函数。
+## 1. Project Structure
 
-． 介绍项目的主要特点和成果。
+The project contains following java class:
 
-规则:
+    Main.java                   // entrance and UI
+    timeCalculator.java         // runtime calculator
+    Film.java                   // single film file
+    FileManipulation.java       // csv loader and file manipulation
+    DatabaseManipulation.java   // sql connection and database manipulation
 
-． 项目报告和源代码必须在截止日期前提交。任何在截止日期后提交(即使迟了1秒)，成绩为0分。截止日期是10月15日2359。
+Other file:
 
-． 文件应以report.pdf、[filename]. java或[filename].cpp格式提交。这些文件应该不要被压缩成一个。
+    filmData.csv           // film data
+    film_database.sql      // create table and load data
+    report.md              // my report
 
-． 分数将取决于源代码和报告的质量。报告应该要易于理解，并提供一个清晰的项目描述，特别是重点。
+## 2. Implemented Function
 
-# Report for the First Project of Database CS
+In both java and sql, the following functions are implemented:
 
-## a comparsion of 
+    - Search
+      - searchFilmByKeyword (String, String) // every column
+      - searchFilmByNo (int) // binary optimization
+    - Update
+      - updateFilmByNo (int, String, String)
+      - toTOttoo (String to) // set all director name "to" to "ttoo"
+    - Delete
+      - deleteFilmByNo (int)
+    - Insert
+      - insertFilm (String)
 
-### 1. Data preparation
+## 3. Time Comparison
 
-The films data csv file (7.64MB) is download from http://www.idatascience.cn/dataset-detail?table_id=102802 which contains **10020 rows of films data**, including **No,Title,Description,Director,Genre,Language,Year,Cast**.
+The following table shows the execute time comparison between java and sql:
 
-### 2.Initialization
+| Function | SQL| Java  | Function | SQL | Java  |
+| :------------: | :----: | :---: | :------------: | :----: | :---: |
+|  Initialization  |  213  |  1365  | toTOttoo (multiple update) |  168  |  15  |
+|  Long String Search  |  12   |  13  |  Short String Search  |  18   |  66  |
+|  Single Integer Search  |  2   |  6  |  Single Integer Search (Binary Optimization)  |  2   |  1  |
+|  Multiple Integer Search  |  3   |  15  | Multiple Integer Search (Binary Optimization)  |  75   |  115  |
+|  Update  |  2   |  2  |  Delete  |  2   |  3  |
+|  Insert  |  4   |  1  |  Word Search  |  374   |  435  |
 
-java:
+[1] unit: millisecond (ms).
+[2] The time is calculated by the average of 10 times of execution.
+[3] The sample input is shown in the last appendix section.
 
-1309 1118 3199 970 954 954 1034 1125 966 971 1047
+---
 
-sql:
+### Observe the table above can obtain that
 
+1. The time of initialization of database is much less than that of file.
+2. The time of sql is much less than that of java in most cases.
+3. However, for some cases, the time of file is the same as that of sql, or even less than that of sql. These cases involve the update or insert of data, I guess that's because these manipulations contains the rearrangement of data structure in sql, which is not necessary in file manipulation.
+
+## 4. Conclusion
+
+1. The database management system can manage data conveniently and improve the efficiency of data retrieval greatly with less amount of code.
+2. The reason of the high efficiency of database is that it maintains data structure that satisfies specific search algorithm, which can implement advanced search algorithm on these data structure (like B-tree).
+3. Database promote a disciplined approach to data management, and analyze data in a variety of ways without huge amount of code to implement the algorithm.
+
+## 5. Evaluation
+
+### Advantages
+
+- Implement the basic manipulation of database, including search, update, delete and insert.
+- The data loader refers to the provided good loader, minimizing the time of data loading and execution.
+- Compare the execute time of different functions, algorithm and implements, which can show the advantage and ground logic of database.
+
+### Disadvantages
+
+- The scale of data is not large enough to show the advantage of database.
+- Time calculation contains the time of output, disabling the comparison of time consumption of different functions.
+- The time of sql includes both execute time and fetch time, which is not accurate enough.
+
+## 6. Appendix
+
+### Data Source
+
+The films data csv file (7.64MB) is download from
+
+    http://www.idatascience.cn/dataset-detail?table_id=102802
+
+which contains **10020 rows of films data**, including
+
+    No,Title,Description,Director,Genre,Language,Year,Cast
+
+### Test Sample Input
+
+#### 1. Short String Search
+
+    // search cast "Brad Pitt"
+    database / file
+    search
+    cast
+    Brad Pitt
+
+#### 2. Long String Search
+
+    // search description
+    database / file
+    search
+    description
+    Returning home from a shopping trip to a nearby town, bored suburban housewife Laura Jesson
+
+#### 3. Word Search
+
+    // search language "English"
+    database / file
+    search
+    language
+    English
+
+#### 4. Integer Search
+
+    // search film no 8659
+    database / file
+    search
+    no
+    8659
+
+#### 5. Multiple Integer Search
+
+    // search film year 1994
+    database / file
+    search
+    year
+    1994
+
+#### 6. Update
+
+    // update film no 10020 title "apple"
+    database / file
+    update
+    10020
+    title
+    apple
+
+#### 7. Delete
+
+    // delete film no 10019
+    database / file
+    delete
+    10019
+
+#### 8. Insert
+
+    database / file
+    insert
+    10050;breathless;french new wave;godard;cool;french;1946;a,b,c
+
+#### 9. binary
+
+    // search film no % 10 == 2
+    database / file
+    binary
+    2
+
+#### 10. toTOttoo
+
+    // set all director name "to" to "ttoo"
+    database / file
+    toTOttoo
+    ab

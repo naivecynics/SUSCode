@@ -1,5 +1,4 @@
 #include<iostream>
-//#include<algorithm>
 using namespace std;
 
 int n,n3;
@@ -26,15 +25,8 @@ int main(){
     cin>>n;
     for (int i=1;i<=n;i++) cin>>a[i];
     quick_sort (a,1,n);
-    // int l=1,r=0x7fffffff;
-    // while (l<r){
-    //     int mid=(l+r)>>1;
-    //     if (check(mid)) r=mid;
-    //     else l=mid+1;
-    // }
     n3=n/3;
     cout<<a[n3+1]<<endl;
-    //cout<<n3*3<<" "<<n-n%3<<endl;
     for (int i=1;i<=n-n%3;i++){
         
         int x=(i/3)+1;
@@ -50,3 +42,7 @@ int main(){
 
     return 0;
 }
+/*
+10
+1 2 3 4 5 6 7 8 9 10
+*/

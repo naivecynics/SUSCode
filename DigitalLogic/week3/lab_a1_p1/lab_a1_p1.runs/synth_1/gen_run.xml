@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcsg324-1" LaunchTime="1696566565">
-  <File Type="PA-TCL" Name="lab_a1_p2.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="lab_a1_p2_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="lab_a1_p2_reports.tcl"/>
-  <File Type="RDS-RDS" Name="lab_a1_p2.vds"/>
-  <File Type="RDS-UTIL" Name="lab_a1_p2_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="lab_a1_p2_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="lab_a1_p2.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="lab_a1_p2_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="lab_a1_p2_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcsg324-1" LaunchTime="1696988329">
+  <File Type="PA-TCL" Name="lab3_practic_add2bit.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="lab3_practic_add2bit_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="lab3_practic_add2bit_reports.tcl"/>
+  <File Type="RDS-RDS" Name="lab3_practic_add2bit.vds"/>
+  <File Type="RDS-UTIL" Name="lab3_practic_add2bit_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="lab3_practic_add2bit_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="lab3_practic_add2bit.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="lab3_practic_add2bit_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="lab3_practic_add2bit_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/lab_a1_p2.v">
+    <File Path="$PSRCDIR/sources_1/new/lab3_practic_add2bit.v">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/lab_a1_p1.v">
+    <File Path="$PSRCDIR/sources_1/new/xb2yg.v">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -26,10 +26,33 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PSRCDIR/sources_1/new/yg2xb.v">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/lab_a1_p1.v">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/lab_a1_p2.v">
+      <FileInfo>
+        <Attr Name="UserDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="lab_a1_p2"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
+      <Option Name="TopModule" Val="lab3_practic_add2bit"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

@@ -21,14 +21,13 @@
 
 
 module xb2yg(
-    input [3:0] yg,
-    output [3:0] xb
+    input [3:0] xb,
+    output [3:0] yg
     );
-    generate
-        for (genvar i=0; i<3; i=i+1) begin: loop
-            xnor xnor_1 (xb[i], yg[i], xb[i+1]);
-        end 
-        and and_1 (xb[3], yg[3], 1'b1);
-        //yb[3] = xb[3];
-    endgenerate
+
+    and and_0 (yg[3], xb[3], xb[3]);
+    xor xor_1 (yg[2], xb[2], xb[3]);
+    xor xor_2 (yg[1], xb[1], xb[2]);
+    xor xor_3 (yg[0], xb[0], xb[1]);
+
 endmodule

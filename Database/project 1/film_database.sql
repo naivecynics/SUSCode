@@ -1,5 +1,5 @@
 CREATE TABLE if not exists films (
-    No INT not null primary key ,
+    No INT  not null  primary key ,
     Title VARCHAR(255) not null,
     Description TEXT ,
     Director TEXT ,

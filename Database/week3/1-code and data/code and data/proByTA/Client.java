@@ -8,7 +8,7 @@ public class Client {
             System.out.println(dm.allContinentNames());
             System.out.println(dm.continentsWithCountryCount());
             System.out.println(dm.findMovieById(2710));
-            //System.out.println(dm.findMovieByYear(1994));
+            System.out.println(dm.findMovieByYear(1994));
             System.out.println(dm.findMovieByYear(2019));
 
         } catch (IllegalArgumentException e) {
